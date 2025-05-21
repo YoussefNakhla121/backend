@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shoghlana</title>
+  <!-- <link rel="stylesheet" href="CSS/profile.css" />
+  <link rel="icon" href="images/tabLogo.png" type="image/png" sizes="128x128"> -->
+
+  <link rel="stylesheet" href="{% static 'shoghlana/css/profile.css' %}">
+  <link rel="icon" href="{% static 'shoghlana/images/tabLogo.png' %}" type="image/png" sizes="128x128">
+
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="{% url 'home' %}" class="logo">
+      <img src="{% static 'shoghlana/images/mini_logo.png' %}" alt="Description" style="width:200px;">
+      
+    </a>
+    <div class="nav-links">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'Search_page' %}">Browse Jobs</a>
+      {% if request.user.is_authenticated and request.user.type == 'Admin' %}
+        <a href="{% url 'add_job' %}" id="post_job">Post a Job</a>
+      {% endif %}
+      <a href="{% url 'profile' %}">Profile</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'logout' %}" class="sign">Log out</a>
+    </div>
+  </nav>
+
+  <main class="profile-container">
+    <section class="profile-card">
+      <img src="{% static 'images/profile_picture.png' %}" alt="User Avatar" class="avatar" />
+      <h2 id="profile-name">{{request.user.Name}}</h2>
+      <p><strong>Username:</strong> <span id="profile-username">{{request.user.username}}</span></p>
+      <p class="email" id="profile-email">{{request.user.email}}</p>
+      <p><strong>Location:</strong> <span id="profile-location">{{request.user.location}}</span></p>
+      <p><strong>Occupation:</strong> <span id="profile-occupation">{{request.user.occupation}}</span></p>
+      <p><strong>Skills:</strong> <span id="profile-skills">{{request.user.skills}}</span></p>
+      <p><strong>Experience (in years):</strong> <span id="profile-experience">{{request.user.years_of_experience}}</span></p>
+      <button class="buttons"><a href="edit_profile/">Edit Profile</a></button>
+
+      {% if request.user.type == 'Admin' %}
+      <button class="buttons" id="posted-jobs"><a href="posted_jobs/">Posted Jobs</a></button>
+      {% elif request.user.type == 'User' %}
+      <button class="buttons" id="applied-jobs"><a href="applied_jobs/">Applied Jobs</a></button>
+      {% endif %}
+    </section>
+  </main>
+
+  <script src="{% static 'shoghlana/js/profile.js' %}"></script>
+  <script src="{% static 'shoghlana/js/user_nav_bar.js' %}"></script>
+
+
+  
+
+</body>
+
+</html>

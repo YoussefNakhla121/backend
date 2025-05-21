@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoghlana</title>
+  <!-- <link rel="stylesheet" href="CSS/job_details.css">
+  <link rel="stylesheet" href="CSS/home.css">
+  <link rel="icon" href="images/tabLogo.png" type="image/png" sizes="128x128"> -->
+
+  <link rel="stylesheet" href="{% static 'shoghlana/css/job_details.css' %}">
+  <link rel="stylesheet" href="{% static 'shoghlana/css/home.css' %}">
+  <link rel="icon" href="{% static 'shoghlana/images/tabLogo.png' %}" type="image/png" sizes="128x128">
+
+
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="{% url 'home' %}" class="logo">
+      <img src="{% static 'shoghlana/images/mini_logo.png' %}" alt="Description" style="width:200px;">
+      
+    </a>
+    <div class="nav-links">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'Search_page' %}">Browse Jobs</a>
+      {% if request.user.is_authenticated and request.user.type == 'Admin' %}
+        <a href="{% url 'add_job' %}" id="post_job">Post a Job</a>
+      {% endif %}
+      <a href="{% url 'profile' %}">Profile</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'logout' %}" class="sign">Log out</a>
+    </div>
+  </nav>
+  <div class="container1">
+    <img src="images/noBackground _miniLogo.png" alt="">
+    <div class="form-container">
+      <h1 class="job_title">{{job.title}}</h1>
+      <p class="company_name">{{job.company}}</p>
+      <p class="job_id">ID: {{job.id}}</p>
+      <p class="salary">Salary: ${{job.salary}}</p>
+      <p class="job_status">Status: {{job.status}}</p>
+      <p class="job_experience">Experience required: {{job.years_of_experience}} Year(s)</p>
+      <p class="job_description">Job Description: {{job.description}}</p>
+    </div>
+    <img src="images/noBackground _miniLogo.png" alt="">
+  </div>
+  <section class="footer">
+    <h3>Contact Us</h3>
+    <p>Email: contact@Shoghlana.com | Phone: xxx xxxx xxx</p>
+    <p>Address: xxxxxxxx, Egypt</p>
+  </section>
+  <script src="{% static 'shoghlana/js/job_details.js' %}"></script>
+  <script src="{% static 'shoghlana/js/user_nav_bar.js' %}"></script>
+
+
+</body>
+
+</html>

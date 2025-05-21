@@ -1,0 +1,239 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+*::selection {
+    color: white;
+    background: rgb(38, 38, 38);
+  }
+  
+  .navbar {
+    background-color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar .logo{
+    transition: transform 0.3s, color 0.3s;
+  }
+  
+  .navbar .logo:hover{
+    transform: scale(1.15);
+  }
+  
+  .nav-links a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #666;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: black;
+    text-decoration: underline;
+    
+  }
+  
+  .navbar .sign {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .nav-links .sign:hover {
+    background-color: #494949;
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+  
+  }
+
+
+
+
+.container {
+    width: 1000px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1;
+}
+
+
+
+.search-container {
+    width: 80%;
+    max-width: 100%;
+    position: relative;
+    padding: 40px;
+    margin: 0 auto;
+}
+
+#search-input:hover {
+    box-shadow: 0px 8px 5px #eee;
+    transition: 0.3s;
+}
+
+#search-input {
+    width: 100%;
+    height: 100%;
+    padding: 20px 40px 20px 20px; /* right padding for the button space */
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    
+  }
+
+#search-button {
+    position: absolute;
+    right: 6%;
+    top: 35%;
+    background-color: black;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+    height: 30%
+  }
+
+.filter-container, .jobs-container div {
+    background-color: white;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.6s ease-in-out;
+
+
+}
+
+.filter-container {
+    width: 25%;
+    height: 25%;
+    left: 2%;
+    max-width: 100%;
+    position: relative;
+    padding: 20px;
+}
+
+.jobs-container{
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+.jobs-container div {
+    flex: 1;
+    max-width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 100%;
+}
+
+.jobs-container div h3{
+    transition: all 0.3s ease;
+
+}
+
+.jobs-container div:hover {
+    /* h3 {
+        font-size: 21px;
+        transition: 0.1s;
+    } */
+    /* background-color: #e5e7eb; */
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35); */
+    /* border-width: 3px; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-color: #333;
+    transition: all 0s ease;
+    
+}
+
+
+.filter-and-jobs {
+    display: flex;
+    gap: 30px;
+    max-width: 100%;
+    margin: auto;
+}
+
+.jobs-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.jobs-container p {
+    margin: 0;
+    color: #494949;
+}
+
+.filter-container h3 {
+    top: 0%;
+    left: 20px;
+    font-weight: normal;
+}
+
+.filter-container .YoE-container, .type-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 20px 0px;
+}
+
+.YoE-container .inputs-yoe {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    
+}
+
+
+.inputs-yoe input {
+    width: 90px;
+    height: 40px;
+}
+
+.inputs-type {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.inputs-type input {
+    left: 0px;
+
+}
+
+
+.footer {
+    background-color: #ddd;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 20px;
+  }

@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoghlana</title>
+    <!-- <link rel="stylesheet" href="CSS/add_job.css">
+    <link rel="stylesheet" href="CSS/home.css">
+    <link rel="icon" href="images/tabLogo.png" type="image/png" sizes="128x128"> -->
+
+    <link rel="stylesheet" href="{% static 'shoghlana/css/add_job.css' %}">
+    <link rel="stylesheet" href="{% static 'shoghlana/css/home.css' %}">
+    <link rel="icon" href="{% static 'shoghlana/images/tabLogo.png' %}" type="image/png" sizes="128x128">
+
+
+</head>
+
+<body>
+    <nav class="navbar">
+    <a href="{% url 'home' %}" class="logo">
+      <img src="{% static 'shoghlana/images/mini_logo.png' %}" alt="Description" style="width:200px;">
+      
+    </a>
+    <div class="nav-links">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'Search_page' %}">Browse Jobs</a>
+      {% if request.user.is_authenticated and request.user.type == 'Admin' %}
+        <a href="{% url 'add_job' %}" id="post_job">Post a Job</a>
+      {% endif %}
+      <a href="{% url 'profile' %}">Profile</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'logout' %}" class="sign">Log out</a>
+    </div>
+  </nav>
+    <div class="container1">
+        <img src="{% static 'shoghlana/images/noBackground _miniLogo.png' %}" alt="">
+        <div class="form-container">
+            <h1>Edit Job</h1>
+            <form action="{% url 'submit_edit_job' job.id %}" method="POST">
+                {% csrf_token %}
+            
+                <input type="text" id="job_title" name="job_title" placeholder="job title" value="{{ job.title }}" required>
+                <br>
+                <input type="text" id="company_name" name="company_name" placeholder="company name" value="{{job.company}}" required>
+                <br>
+                <textarea id="job_description" name="job_description" placeholder="Job description" required>{{job.description}}</textarea>
+                <br>
+                <input type="number" id="salary" name="salary" placeholder="salary" value="{{job.salary}}" required>
+                <br>
+                <input type="text" id="years_of_experience" name="years_of_experience" placeholder="years of experience" value="{{job.years_of_experience}}" required>
+                <br>
+                <input placeholder="job type" list="job type" id="job_type" name="job_type" value ="{{job.job_type}}" class="datalist-input" required/>
+                <datalist id="job type">
+                    <option value="Full Time">
+                    <option value="Part Time">
+                    <option value="Internship">
+                    <option value="Freelance">
+                </datalist>
+                <br>
+                <label for="toggleSwitch">Status:</label>
+                <br>
+                <div class="radios">
+                    <label for="open">Open</label>
+                    <input type="radio" id="open" name="status" value="open" {% if job.status == 'open' %}checked{% endif %}>
+                    <label for="closed">Closed</label>
+                    <input type="radio" id="closed" name="status" value="closed" {% if job.status == 'closed' %}checked{% endif %}>
+                </div>
+                <br>
+                <div class="button-container">
+                    <button type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+        <img src="{% static 'shoghlana/images/noBackground _miniLogo.png' %}" alt="">
+    </div>
+    <section class="footer">
+        <h3>Contact Us</h3>
+        <p>Email: contact@Shoghlana.com | Phone: xxx xxxx xxx</p>
+        <p>Address: xxxxxxxx, Egypt</p>
+    </section>
+    <script src="{% static 'shoghlana/js/add_job.js' %}"></script>
+    <script src="{% static 'shoghlana/js/user_nav_bar.js' %}"></script>
+
+</body>
+
+</html>

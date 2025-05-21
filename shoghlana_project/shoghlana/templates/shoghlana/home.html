@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoghlana</title>
+  <!-- <link rel="stylesheet" href="CSS/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="images/tabLogo.png" type="image/png" sizes="128x128"> -->
+  
+  <link rel="stylesheet" href="{% static 'shoghlana/css/home.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="{% static 'shoghlana/images/tabLogo.png' %}" type="image/png" sizes="128x128">
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="{% url 'home' %}" class="logo">
+      <img src="{% static 'shoghlana/images/mini_logo.png' %}" alt="Description" style="width:200px;">
+      
+    </a>
+    <div class="nav-links">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'Search_page' %}">Browse Jobs</a>
+      {% if request.user.is_authenticated and request.user.type == 'Admin' %}
+        <a href="{% url 'add_job' %}" id="post_job">Post a Job</a>
+      {% endif %}
+      <a href="{% url 'profile' %}">Profile</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'logout' %}" class="sign">Log out</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h2>Find Your Dream Job Today</h2>
+    <p>Discover the perfect job for you with personalized listings and easy applications. Start your career journey
+      today!</p>
+    <div class="search-bar">
+      <i class="fas fa-search search-icon"></i>
+      <input id="home-search-bar" type="text" placeholder="Search Jobs (e.g., software engineer)">
+      <a href="{% url 'Search_page' %}">
+        <button id="home-search-button">Search Jobs</button>
+      </a>
+    </div>
+
+    <div class="dream-job-img">
+      <img src="{% static 'shoghlana/images/job_no_background.png' %}" alt="What's Your Dream Job?">
+    </div>
+  </section>
+
+  <section class="companies">
+    <h3>Join Top Companies</h3>
+    <div class="company-logos">
+      <p>Google</p>
+      <p>Facebook</p>
+      <p>Amazon</p>
+      <p>Apple</p>
+      <p>Netflix</p>
+    </div>
+  </section>
+
+  <section class="footer">
+    <h3>Contact Us</h3>
+    <p>Email: contact@Shoghlana.com | Phone: xxx xxxx xxx</p>
+    <p>Address: xxxxxxxx, Egypt</p>
+  </section>
+  <script src="{% static 'shoghlana/js/home.js' %}"></script>
+  <script src="{% static 'shoghlana/js/user_nav_bar.js' %}"></script>
+</body>
+
+</html>

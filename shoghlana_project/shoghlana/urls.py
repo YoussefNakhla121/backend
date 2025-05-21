@@ -1,0 +1,31 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('home/', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('Search_page/', views.search, name='Search_page'),
+    path('Search_page/filter_jobs/', views.filter_jobs, name='filter_jobs'),
+    path('add_job/', views.add_job, name='add_job'),
+    path('add_job/submit_job/', views.submit_job, name='submit_job'),
+    path('edit_job/<int:job_id>/', views.edit_job, name='edit_job'),
+    path('edit_job/<int:job_id>/submit_edit_job/', views.submit_edit_job, name='submit_edit_job'),
+    path('delete_job/<int:job_id>/', views.delete_job, name='delete_job'),
+    path('profile/posted_jobs/', views.posted_jobs, name='posted_jobs'),
+    path('profile/', views.profile, name='profile'),
+    path('profile/applied_jobs/', views.applied_jobs, name='applied_jobs'),
+    path('profile/applied_jobs/<int:job_id>/', views.applied_job_details, name='applied_job_details'),
+    path('profile/edit_profile/', views.edit_profile, name='edit_profile'),
+    path('profile/edit_profile/submit_edit_profile/', views.submit_edit_profile, name='submit_edit_profile'),
+    path('signup/', views.signup, name='signup'),
+    path('login/', views.login_view, name='login'),
+    path('job_details/<int:job_id>/', views.job_details, name='job_details'),
+    path('job_details/', views.job_details, name='job_details'),
+    path('job_details/<int:job_id>/apply_job', views.apply_job, name='apply_job'),
+    path('logout/', views.logout_view, name='logout'),
+    path('profile/posted_jobs/edit_job/<int:job_id>/', views.edit_job, name='edit_job'),
+    path('profile/posted_jobs/submit_edit_job/<int:job_id>/', views.submit_edit_job, name='submit_edit_job'),
+    path('profile/posted_jobs/delete_job/<int:job_id>/', views.delete_job, name='delete_job'),
+    path('profile/posted_jobs/view_applicants/<int:job_id>/', views.view_applicants, name='view_applicants'),
+]
